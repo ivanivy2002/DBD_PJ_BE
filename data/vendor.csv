@@ -1,0 +1,8 @@
+id,name,password,address,email,reg_time
+1,Vendor1,vendorpass,123 Main St,vendor1@email.com,2023-01-05 10:00:00
+2,Vendor2,pass789,456 Oak St,vendor2@email.com,2023-02-10 11:15:00
+3,Supplier1,supplypass,789 Pine St,supplier1@email.com,2023-03-15 12:30:00
+4,Supplier2,supply123,987 Elm St,supplier2@email.com,2023-04-20 13:45:00
+5,Distributor,dist_pass,654 Birch St,distributor@email.com,2023-05-25 14:30:00
+6,vendor6,vendor6pass,123 Main St,v6@e.com,2023-06-30 15:45:00
+7,vendor7,vendor7pass,123 Main St,v7@e.com,2023-06-30 15:45:00

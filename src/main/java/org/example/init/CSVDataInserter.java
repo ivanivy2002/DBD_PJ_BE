@@ -1,4 +1,4 @@
-package org.example;
+package org.example.init;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -8,16 +8,16 @@ import java.sql.*;
 
 public class CSVDataInserter {
     public static void main(String[] args) {
-        CSVDataInsert("./data/room.csv", "GBK", "room");
-        CSVDataInsert("./data/student.csv", "UTF-8", "student");
+        String directory = "./data/";
+        String[] filenames = {"user", "vendor", "platform", "product", "price_history", "favorite", "message"};
+        for (String filename : filenames) {
+            CSVDataInsert(directory + filename + ".csv", "UTF-8", filename);
+        }
     }
 
     public static void CSVDataInsert(String csvFilePath, String code, String tableName) {
-//        String csvFilePath = "./data/room.csv";
-//        String tableName = "room";
         try {
             // 打开CSV文件进行读取
-//            BufferedReader reader = new BufferedReader(new FileReader(csvFilePath));
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(csvFilePath), code));
             String headerLine = reader.readLine(); // 读取表头
             // 连接数据库
@@ -28,7 +28,6 @@ public class CSVDataInserter {
             StringBuilder sqlBuilder = new StringBuilder();
             StringBuilder sqlDeleter = new StringBuilder();
             // 清空表
-
             // 步骤1：查询表中的记录数
             String countQuery = "SELECT COUNT(*) AS total_records FROM " + tableName;
             PreparedStatement countStatement = connection.prepareStatement(countQuery);
@@ -47,8 +46,6 @@ public class CSVDataInserter {
             }
             countStatement.close();
             resultSet.close();
-
-
 //            sqlDeleter.append("SELECT COUNT(*) AS total_records FROM ").append(tableName).append(";\n");
 //            sqlDeleter.append("IF total_records > 0 THEN\n");
 //            sqlDeleter.append("DELETE FROM ").append(tableName).append(";\n");
